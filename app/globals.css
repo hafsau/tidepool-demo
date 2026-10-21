@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+ * Site chrome, seeded from Tidepool's open-source web palette (tidepool-org/blip
+ * themes + @tidepool/viz colors): purple90 #271B46 for text, indigo #627CFF /
+ * #4A60E2 for accents, blue-gray neutrals, and the BG range colors for charts.
+ * Seeded, not cloned: no Tidepool font, logo, or wordmark.
+ *
+ * Phone frames carry their own palettes (see components/ios and components/m3):
+ * iOS from open-source Loop's asset catalog, Android from Tidepool's open-source
+ * AndroidCarePartner theme.
+ */
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --sunken: #eef1f8;
+  --line: #d1d6e1;
+  --line-soft: #e1eaf9;
+  --ink: #271b46;
+  --muted: #5f6b82;
+  --accent: #4a60e2;
+  --accent-soft: #f4f5ff;
+  --warn: #a35700;
+  --warn-soft: #ffe8cf;
+  --danger: #cc2900;
+  --danger-soft: #ffece9;
+  --ok: #00754e;
+  --ok-soft: #daf9e4;
+  --focus: #4a60e2;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: var(--font-site), system-ui, sans-serif;
+  --font-ios: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  --font-roboto: var(--font-roboto-face), Roboto, "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose-tight p + p {
+  margin-top: 0.75em;
+}
+
+/* Inside a phone frame everything is sized in em off the screen's root, so
+   the low-vision toggle can scale the whole screen at once. */
+.screen {
+  font-size: 13px;
+  line-height: 1.35;
+}
+.screen[data-lv="true"] {
+  font-size: 20px;
+}
+
+/* HF overlay: outline every critical item the user must perceive. */
+[data-hf="true"] [data-critical] {
+  outline: 1.5px dashed #627cff;
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.order-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  border-radius: 999px;
+  background: #271b46;
+  color: #fff;
+  font: 600 0.62em/1 var(--font-sans);
+  padding: 0 0.3em;
+  vertical-align: middle;
+}
+
+@keyframes rise {
+  from { transform: translateY(6px); opacity: 0.6; }
+  to { transform: none; opacity: 1; }
+}
+.rise {
+  animation: rise 220ms ease-out;
+}
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+.alarm-pulse {
+  animation: pulse-ring 1.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise, .alarm-pulse { animation: none; }
+}
+
+/* Low vision: the glucose and basal cards stack instead of clipping. */
+.screen[data-lv="true"] .lv-stack {
+  grid-template-columns: minmax(0, 1fr);
+}
