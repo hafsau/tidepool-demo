@@ -1,6 +1,6 @@
 # Held to the iOS bar
 
-**▶ Live: _(link after deploy)_** · deep link to try: `/?flow=sensor&step=s-stale&hf=1`
+**▶ Live: [tidepool-demo-gold.vercel.app](https://tidepool-demo-gold.vercel.app)** · [Automation stops (deep link)](https://tidepool-demo-gold.vercel.app/?flow=sensor&step=s-stale&hf=1) · [Parity matrix](https://tidepool-demo-gold.vercel.app/matrix) · [Risk & protocol](https://tidepool-demo-gold.vercel.app/risk) · [About](https://tidepool-demo-gold.vercel.app/about)
 
 **An Android parity concept for an automated insulin dosing app.** An unofficial concept by [Hafsa Usmani](https://hafsausmani.com) for Tidepool's **Product Designer (Temporary Full-Time)** role.
 
